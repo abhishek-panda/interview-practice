@@ -1,0 +1,17 @@
+db.employees.findOne()
+
+db.employees.aggregate([
+    {
+        $group:{
+            _id:  "$costCenterId",
+            count: {"$sum":1}
+        }
+    },
+    {
+        $project: {
+            _id: 0,
+            id: "$_id",
+            costCenter: 1 
+        }
+    }
+])

@@ -1,0 +1,1 @@
+//NOTE: Simple algo no need to write algorithm

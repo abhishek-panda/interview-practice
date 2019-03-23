@@ -1,0 +1,52 @@
+.debug {
+    border: 1px solid yellow; 
+}
+
+.flex {
+    display: flex;
+}
+
+.app-wrapper {
+    display:  flex;
+    flex-direction: column;
+}
+
+.upper-section {
+    height: 200px;
+}
+
+.compare-section, .item-section, .feature-section {
+    flex-basis: 20%;
+    margin: 0 10px;
+    position: relative;
+}
+.item-section img {
+    width: 100%;
+    height: 70%;
+    object-fit: contain;
+}
+
+.img-placehodler {
+    width: 100%;
+    height: 70%;
+    object-fit: contain;
+    background-color: grey;
+}
+select {
+    width: 100%;
+}
+
+.remove{
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 12px;
+    text-align: center;
+    background-color: white;
+    line-height: 30px;
+    z-index: 2;
+    box-shadow: 1px 1px 1px 1px black;
+    cursor: pointer;
+}
+
