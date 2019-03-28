@@ -1,14 +1,12 @@
 function SelectionSort(arr) {
     for(var k = 0; k < arr.length - 1 ; k++){
-        var minVal = Number.MAX_VALUE, minPos = null;
         for(var i = k; i < arr.length; i++) {
-            if(minVal > arr[i]) {
-                minVal = arr[i];
-                minPos = i;
+            if(arr[k] > arr[i]) {
+                var temp = arr[i];
+                arr[i] = arr[k];
+                arr[k] = temp;
             }
         }
-        arr[minPos] = arr[k];
-        arr[k] = minVal;
     }
 }
 

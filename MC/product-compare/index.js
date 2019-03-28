@@ -9,21 +9,22 @@
             findDiff = false;
 
         function init(elem) {
-                container = elem;
-            return fetch(url)
-                .then(function(response) {
-                    return response.json();
-                })
-                .then(function(response) {
-                    data = response;
-                    buildApp(container);
-                })
-                .catch(function(error) {
-                    app = errorHandler();
-                    container.appendChild(app)
-                });
+            container = elem;
+            fetch(url)
+            .then(function(response) {
+                return response.json(); //TODO:  check response status
+            })
+            .then(function(response) {
+                data = response;
+                buildApp(container);
+            })
+            .catch(function(error) {
+                app = errorHandler();
+                container.appendChild(app)
+            });
         }
 
+        //TODO: Name internal function starting with _
         function buildApp(container) {
             if(app) {
                 container.removeChild(app);

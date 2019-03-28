@@ -1,0 +1,28 @@
+.debug {
+    border : 1px solid black;
+}
+
+.card-app > div{
+    padding: 10px 5px 0px 5px;
+}
+
+#add-new {
+    cursor: pointer;
+}
+
+#add-new-form {
+    display: none;
+    flex-direction: column;
+}
+
+.form-row {
+    display: flex;
+}
+
+#card-ccv-error{
+    display: none;
+}
+
+#card-number-error{
+    display: none;
+}
