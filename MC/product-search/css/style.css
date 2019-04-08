@@ -1,0 +1,49 @@
+body{
+    background-color: whitesmoke;
+}
+
+#container{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+#filterBox{
+    width: 19.5%;
+    background-color: white;
+    box-sizing: border-box;
+}
+
+#productsSection{
+    width: 79.5%;
+    background-color: white;
+    box-sizing: border-box;
+}
+
+#filters {
+    list-style: none;
+    display: inline;
+}
+
+.horizontal-inline {
+    display: inline;
+    padding: 0 10px;
+    font-weight: bold;
+}
+#productsList div{
+    width: 33.3%;
+    display: inline-block;
+}
+figcaption{
+    white-space: pre-wrap;
+}
+.ratingLabel{
+    background-color: #388e3c;
+}
+.ratingLabel::after{
+    content: '★'
+}
+.mrpLabel{
+    text-decoration: line-through;
+    font-style: italic;
+}

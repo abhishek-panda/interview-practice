@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+      <title>Search Products</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="favicon" type="image/png" href="https://www.splitwise.com/apple-touch-icon-precomposed.png">
+      <link rel="stylesheet" href="css/style.css">
+      
+</head>
+
+<body>
+      <div id="container">
+            <aside id="filterBox">
+                  <header>
+                        Filters
+                  </header>
+                  <hr/>
+                  <section>
+                        <p>PRICE</p>
+                        <div id="priceFilterDiv">
+                              <select id="min-price">
+                                    <option value="">Min</option>
+                                    <option value="500">500</option>
+                                    <option value="1000">1000</option>
+                                    <option value="1500">1500</option>
+                                    <option value="2000">2000</option>
+                                    <option value="2500">2500</option>
+                                    <option value="3000">3000</option>
+                                    <option value="3500">3500</option>
+                                    <option value="4000">4000</option>
+                              </select>
+                              to
+                              <select id="max-price">
+                                    <option value="more">₹4000+</option>
+                                    <option value="4000">₹4000</option>
+                                    <option value="3500">₹3500</option>
+                                    <option value="3000">₹3000</option>
+                                    <option value="2500">₹2500</option>
+                                    <option value="2000">₹2000</option>
+                                    <option value="1500">₹1500</option>
+                                    <option value="1000">₹1000</option>
+                                    <option value="500">₹500</option>
+                              </select>
+                        </div>
+                  </section>
+                  <hr/>
+                  <section>
+                        <p>BRAND</p>
+                        <div id="searchFilterDiv">
+                              <input id="filterBrand" type="text" placeholder="Search Brand.." onclick="filterProducts()">
+                        </div>
+                  </section>
+                  <hr/>
+                  <section>
+                        <p>COLOR</p>
+                        <div id="colorFilterDiv"></div>
+                  </section>
+            </aside>
+            <section id="productsSection">
+                  <nav id="productsSort">
+                        <span>
+                              <em>Sort By</em>
+                        </span>
+                        <ul id="filters">
+                              <li class="horizontal-inline">
+                                    <strong>Relevance</strong>
+                              </li>
+                              <li class="horizontal-inline">
+                                    <strong>Price - Low to High</strong>
+                              </li>
+                              <li class="horizontal-inline">
+                                    <strong>Price - High to Low</strong>
+                              </li>
+                        </ul>
+                  </nav>
+                  <div id="productsList"></div>
+            </section>
+      </div>
+      <script src="js/app.js" defer></script>
+</body>
+
+</html>

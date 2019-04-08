@@ -1,4 +1,6 @@
 var BaseLinkedList = (function() {
+    'use strict'
+    var root = null;
 
     function _Node(data) {
         this.data = data;
@@ -6,10 +8,10 @@ var BaseLinkedList = (function() {
     }
 
     function insert(data) {
-        if(this.root === null) {
-            this.root = new _Node(data);
+        if(root === null) {
+            root = new _Node(data);
         } else {
-            var node = this.root;
+            var node = root;
             while(node.next) {
                 node = node.next;
             }
@@ -18,14 +20,14 @@ var BaseLinkedList = (function() {
     }
 
     function remove(data) {
-        var node = this.root,
+        var node = root,
             prev = null;
         while(node) {
             if(node.data === data) {
                 if(prev) {
                     prev.next = node.next;
                 } else {
-                    this.root = node.next;
+                    root = node.next;
                 }
                 break;
             }
@@ -35,9 +37,9 @@ var BaseLinkedList = (function() {
     }
 
     function removeAtFirst() {
-        var node = this.root;
+        var node = root;
         if(node) {
-            this.root = node.next;
+            root = node.next;
             node.next = null;
             return node;
         }
@@ -45,7 +47,7 @@ var BaseLinkedList = (function() {
     }
 
     function removeAtLast() {
-        var node = this.root,
+        var node = root,
             prev = null;
         while(node && node.next) {
             prev = node;
@@ -53,14 +55,14 @@ var BaseLinkedList = (function() {
         }
         if(prev) {
             prev.next = null;
-        } else if(prev === null && node){
-            this.root = null;
+        } else if(prev === null && node) {
+            root = null;
         }
         return node;
     }
 
     function search(data) {
-        var node = this.root,
+        var node = root,
             foundAt = -1,
             position = -1;
         while(node) {
@@ -75,7 +77,7 @@ var BaseLinkedList = (function() {
     }
 
     function insertBefore(data, element) {
-        var node = this.root;
+        var node = root;
         var prev = null;
         while(node) {
             if(node.data === element) {
@@ -85,7 +87,7 @@ var BaseLinkedList = (function() {
                     prev.next = newNode;   
                 } else {
                     newNode.next = node;
-                    this.root = newNode;
+                    root = newNode;
                 }
                 break;
             }
@@ -94,19 +96,8 @@ var BaseLinkedList = (function() {
         }
     }
 
-    function unshift(data) {
-        var node = this.root;
-        var newNode = new _Node(data);
-        if(node) {
-            newNode.next = node;
-            this.root = newNode;
-        } else {
-            this.root = newNode;
-        }
-    }
-
     function insertAfter(data, element) {
-        var node = this.root;
+        var node = root;
         while(node) {
             if(node.data === element) {
                 var newNode = new _Node(data);
@@ -119,7 +110,7 @@ var BaseLinkedList = (function() {
     }
 
     function getSize() {
-        var node = this.root,
+        var node = root,
             size = 0;
         while(node){
             size++;
@@ -128,13 +119,11 @@ var BaseLinkedList = (function() {
         return size;
     }
 
-    function getRoot() { return this.root; }
+    function getRoot() { return root; }
 
-    function toString() { return JSON.stringify(this.root); }
+    function toString() { return JSON.stringify(root); }
 
-    function LinkedList() {
-        this.root = null;
-    }
+    function LinkedList() {}
 
     LinkedList.prototype = {
         getRoot: getRoot,

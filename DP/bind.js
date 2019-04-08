@@ -19,4 +19,5 @@ function Test() {
 
 }
 
-Test.bind(this)
+var b = Test.bind(aa)
+b(c);

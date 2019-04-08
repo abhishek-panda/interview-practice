@@ -9,7 +9,7 @@ FK.CreditManagementApp = (function(doc,win){
     var mm = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
     var currCard;
     var minLength = 16;
-    var allSavedCards = [];
+    var allSavedCards = JSON.parse(localStorage.getItem('allSavedCards')  || '[]');
     
 
     for (var i = 0 ; i < 20; i++) {
@@ -38,10 +38,7 @@ FK.CreditManagementApp = (function(doc,win){
         }
         app = initialize();
         container.appendChild(app);
-        //Once DOM is created attach event listeners
-        setTimeout(function() {
-            attachListeners(container);
-        }, 0);
+        attachListeners(container);
     }
 
     function initialize() {
@@ -161,6 +158,7 @@ FK.CreditManagementApp = (function(doc,win){
         validateCard();
         saveCard();
         deleteListeners();
+        editListeners();
     }
 
     function toggleAddCardForm() {
@@ -200,7 +198,7 @@ FK.CreditManagementApp = (function(doc,win){
         var cardCCVError = doc.getElementById('card-ccv-error');
         cardCCV.addEventListener('blur', function (event) {
             var ccValue = event.target.value.trim();
-            if(currCard && currCard.cvv == 'required' && currCard.cvvLength > ccValue) {
+            if(currCard && currCard.cvv == 'required' && currCard.cvvLength !== ccValue.length) {
                 cardCCVError.style.display = 'block';
             }
         });
@@ -277,10 +275,10 @@ FK.CreditManagementApp = (function(doc,win){
                     allSavedCards.push(card);
                     localStorage.setItem('allSavedCards', JSON.stringify(allSavedCards));
                     reset();
+                    buildApp(container);
             }
         })
     }
-
 
     function deleteListeners() {
         var cards = doc.getElementsByClassName('delete-card');
@@ -291,6 +289,16 @@ FK.CreditManagementApp = (function(doc,win){
                 var cardDOM = doc.getElementById('card-'+item);
                 var savedCardsDOM = doc.getElementById('saved-cards');
                 savedCardsDOM.removeChild(cardDOM);
+            });
+        }
+    }
+
+    function editListeners() {
+        var cards = doc.getElementsByClassName('edit-card');
+        for(var i = 0; i < cards.length; i++) {
+            cards[i].addEventListener('click', function(event) {
+                var item = event.target.attributes['data-id'].value;
+                var cardDOM = doc.getElementById('card-'+item);
             });
         }
     }
