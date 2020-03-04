@@ -2,8 +2,8 @@ function throttle(fn , wait) {
     var ignore = false;
     return function () {
         if(!ignore) {
+            ignore = true;
             fn.apply(this, arguments);
-            ignore = true
             setTimeout(function(){
                 ignore = false;
             }, wait);
